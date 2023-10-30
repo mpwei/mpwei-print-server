@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo "Generic POS Printer"
+echo "Generic POS Printer CUPS driver installation Start"
+echo "---------------------------------------"
+echo ""
+
+if [ -e /usr/lib/cups/filter/rastertogtp ]
+then 
+	echo "Removing rastertogtp"
+	rm -f /usr/lib/cups/filter/rastertogtp
+fi
+
+if [ -d /usr/share/cups/model/GenericPOS ]
+then
+	echo "Removing dir .../cups/model/GenericPOS"
+	rm -rf /usr/share/cups/model/GenericPOS
+fi
+
+echo "Removing Complete!!!"
+echo ""
+

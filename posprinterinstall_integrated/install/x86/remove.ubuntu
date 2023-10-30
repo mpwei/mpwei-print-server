@@ -1,0 +1,34 @@
+#!/bin/sh
+
+echo "Generic POS Printer"
+echo "Generic POS Printer CUPS driver installation Start"
+echo "---------------------------------------"
+echo ""
+
+if [ -z $1 ]
+then
+	echo "Please Set Destination Directory in order for us to remove ppd files"
+	echo "(ex)"
+	echo "#>./remove.ubuntu /usr/share/ppd/gutenprint/5.0/en [Enter]"
+	echo ""
+	exit 1
+fi
+
+if [ -e /usr/lib/cups/filter/rastertogtp ]
+then 
+	echo "Removing rastertogtp"
+	rm -f /usr/lib/cups/filter/rastertogtp
+fi
+
+if [ -d /usr/share/cups/model/GenericPOS ]
+then
+	echo "Removing dir .../cups/model/GenericPOS"
+	rm -rf /usr/share/cups/model/GenericPOS
+else
+	echo "Removing ppd files...."
+	rm -rf $1/GenericTP.ppd.gz
+fi
+
+echo "Removing Complete!!!"
+echo ""
+
